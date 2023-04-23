@@ -23,27 +23,27 @@
  * struct fmt - Function pointer that points to a function which is associated
  * with the format specifier specified in the fmt member
  *
- * @fmt: This member is of type char
+ * @format: This member is of type char
  * @fn: This member is of type function pointer
  */
-struct fmt
+struct format
 {
-	char fmt;
+	char format;
 	int (*fn)(va_list, char[], int, int, int, int);
 };
 
 
 /**
- * typedef struct fmt fmt_t - Function that creates an alias for
+ * typedef struct format fmt_t - Function that creates an alias for
  * the type struct fmt
  *
- * @fmt: This member is of type char
+ * @format: This member is of type char
  * @fm_t: This member is of type function pointer
  */
-typedef struct fmt fmt_t;
+typedef struct format fmt_t;
 
 int _printf(const char *format, ...);
-int handle_print(const char *fmt, int *i, va_list list, char buffer[], int flags, int width, int precision, int size);
+int handle_print(const char *format, int *i, va_list list, char buffer[], int flags, int width, int precision, int size);
 
 /****************** FUNCTIONS ******************/
 
