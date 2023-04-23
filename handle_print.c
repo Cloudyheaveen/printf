@@ -21,10 +21,11 @@ int handle_print(const char *format, int *ind, va_list list, char buffer[],
 		{'c', print_char}, {'s', print_string}, {'%', print_percent},
 		{'\0', NULL}
 	};
+	int i;
 
-	for (int i = 0; fmt_types[i].fmt != '\0'; i++)
+	for (i = 0; fmt_types[i].fmt != '\0'; i++)
 	{
-		if (fmt[*ind] == fmt_types[i].fmt)
+		if (format[*ind] == fmt_types[i].fmt)
 		{
 			printed_chars = fmt_types[i].fn(list, buffer, flags, width, precision, size);
 			(*ind)++;

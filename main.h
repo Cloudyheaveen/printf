@@ -40,9 +40,9 @@ struct fmt
  * the type struct fmt
  *
  * @fmt: This member is of type char
- * @fn: This member is of type function pointer
+ * @fmt_t: This member is of type function pointer
  */
-typedef struct fmt fn;
+typedef struct fmt fmt_t;
 
 int _printf(const char *format, ...);
 int handle_print(const char *format, int *i, va_list list, char buffer[],
