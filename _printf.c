@@ -50,7 +50,8 @@ int _printf(const char *format, ...)
 }
 
 /**
- * print_buffer - Prints the contents of the buffer if it exists
+ * print_buffer - Function that is used to display the data stored in a buffer
+ * to the user or to write it to a file
  * @buffer: A buffer to store the output
  * @b: Index at which to add next char, represents the length.
  */
