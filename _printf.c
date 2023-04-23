@@ -10,7 +10,7 @@ void print_buffer(char buffer[], int *b);
 int _printf(const char *format, ...)
 {
 	int i, j = 0, b = 0;
-	int flags, width, precision, size, b = 0;
+	int flags, width, precision, size;
 	va_list list;
 	char buffer[BUFF_SIZE];
 

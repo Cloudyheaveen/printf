@@ -1,4 +1,5 @@
 #include "main.h"
+#include <string.h>
 
 /**
  * get_flags - Function that retrieves the flags for the format specifier
@@ -12,7 +13,7 @@ int get_flags(const char *format, int *i)
 	int j;
 	int flags = 0;
 	const char *flag_chars = "-+ #0";
-	const int flag_values[] = {FLAG_MINUS, FLAG_PLUS, FLAG_SPACE, FLAG_HASH, FLAG_ZERO};
+	const int flag_values[] = {F_MINUS, F_PLUS, F_SPACE, F_HASH, F_ZERO};
 
 	while (strchr(flag_chars, format[*i]))
 	{
