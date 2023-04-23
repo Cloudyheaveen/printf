@@ -1,7 +1,5 @@
 #include "main.h"
 
-#define BUFF_SIZE 1024
-
 void print_buffer(char buffer[], int *b);
 
 /**
@@ -12,8 +10,7 @@ void print_buffer(char buffer[], int *b);
 int _printf(const char *format, ...)
 {
 	int i, j = 0, k = 0;
-	int width = 0, precision = 0, size, b = 0;
-	char flags = '\0';
+	int flags, width, precision, size, b = 0;
 	va_list list;
 	char buffer[BUFF_SIZE];
 
