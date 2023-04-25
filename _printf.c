@@ -1,42 +1,45 @@
 #include "main.h"
-
 /**
- * _printf - Function that produces output according to a format
- * @format: A pointer to a string of chars to be printed
- * Return: The number of characters printed
+ * _printf - is a function that selects the correct function to print.
+ * @format: identifier to look for.
+ * Return: the length of the string.
  */
-int _printf(const char *format, ...)
+int _printf(const char * const format, ...)
 {
-	int i, result = 0;
-	char c;
-	va_list list;
-	int (*print)(va_list *);
+	format_t m[] = {
+		{"%s", print_string}, {"%c", print_char},
+		{"%%", print_percent},
+		{"%i", print_int}, {"%d", print_dec}, {"%r", print_srev},
+		{"%R", print_rot13}, {"%b", print_bin}, {"%u", print_unsigned},
+		{"%o", print_oct}, {"%x", print_hex}, {"%X", print_HEX},
+		{"%S", print_ex_string}, {"%p", print_pointer}
+	};
 
-	va_start(list, format);
+	va_list args;
+	int i = 0, j, len = 0;
 
-	if (!format)
-		return (0);
+	va_start(args, format);
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+		return (-1);
 
-	for (i = 0; format[i] != '\0'; i++)
+Here:
+	while (format[i] != '\0')
 	{
-		if (format[i] != '%')
+		j = 13;
+		while (j >= 0)
 		{
-			i++;
-			c = format[i];
-			if (c == '%')
+			if (m[j].frm[0] == format[i] && m[j].frm[1] == format[i + 1])
 			{
-				result += write(1, "%", 1);
-				continue;
+				len += m[j].f(args);
+				i = i + 2;
+				goto Here;
 			}
-			print = get_flags(c);
-			result += print(&list);
+			j--;
 		}
-		else
-		{
-			result += write(1, &format[i], 1);
-		}
+		_putchar(format[i]);
+		len++;
+		i++;
 	}
-
-	va_end(list);
-	return (result);
+	va_end(args);
+	return (len);
 }
