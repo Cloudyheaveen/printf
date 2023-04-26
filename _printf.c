@@ -23,7 +23,7 @@ int _printf(const char * const format, ...)
 		return (-1);
 
 Here:
-	for (;format[i] != '\0'; i++)
+	for (; format[i] != '\0'; i++)
 	{
 		for (n = 13; n >= 0; n--)
 		{
